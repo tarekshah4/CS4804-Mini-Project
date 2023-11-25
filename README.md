@@ -6,15 +6,16 @@ Python Version 3.7
 ### Initial Steps:
 Clone repository on local machine.
 
+Install pytorch: https://pytorch.org/get-started/locally/
+
 #### Run the following commands:
 
 pip install pygame
 
-pip install torch torchvision
-
 pip install matplotlib ipython
 
-## Runnning the model
+
+## Running the model
 From main folder:
 
 python ./agent.py
