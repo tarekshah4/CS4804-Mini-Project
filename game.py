@@ -22,14 +22,13 @@ BLUE = (0, 0, 255)
 BLACK = (0,0,0)
 
 SQUARE_SIZE = 30
-SPEED = 60
+SPEED = 100
 
 class Snake:
 
     def __init__(self):
         self.w = 600
         self.h = 600
-        # init display
         self.display = pygame.display.set_mode((self.w, self.h))
         pygame.display.set_caption('Snake')
         self.clock = pygame.time.Clock()
@@ -37,7 +36,6 @@ class Snake:
 
 
     def reset(self):
-        # init game state
         self.direction = Direction.RIGHT
 
         self.head = Point(self.w/2, self.h/2)
@@ -97,8 +95,10 @@ class Snake:
     def is_collision(self, pt=None):
         if pt is None:
             pt = self.head
+        # check if snake runs into wall
         if pt.x > self.w - SQUARE_SIZE or pt.x < 0 or pt.y > self.h - SQUARE_SIZE or pt.y < 0:
             return True
+        #check if snake runs into self
         if pt in self.snake[1:]:
             return True
 

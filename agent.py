@@ -17,7 +17,7 @@ class Agent:
         self.epsilon = 0 # randomness
         self.gamma = 0.9 # discount rate
         self.mem = deque(maxlen=MAX_MEM) # popleft()
-        self.model = Linear_QNet(11, 256, 3)
+        self.model = Linear_QNet(11, 256, 3) # define model
         self.trainer = QTrainer(self.model, lr=LR, gamma=self.gamma)
 
 
@@ -78,8 +78,6 @@ class Agent:
 
         states, actions, rewards, next_states, dones = zip(*mini_sample)
         self.trainer.train_step(states, actions, rewards, next_states, dones)
-        #for state, action, reward, nexrt_state, done in mini_sample:
-        #    self.trainer.train_step(state, action, reward, next_state, done)
 
     def train_short_mem(self, state, action, reward, next_state, done):
         self.trainer.train_step(state, action, reward, next_state, done)
